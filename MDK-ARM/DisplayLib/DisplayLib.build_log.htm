@@ -28,12 +28,19 @@ Project File Date:  11/01/2024
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'DisplayLib'
 compiling main.c...
-../Core/Inc/DisplayLib.h(4): warning:  #1-D: last line of file ends without a newline
-  #include "DisplayLib.c"
-../Core/Inc/DisplayLib.h(4): error:  #5: cannot open source input file "DisplayLib.c": No such file or directory
-  #include "DisplayLib.c"
-../Core/Src/main.c: 1 warning, 1 error
-"DisplayLib\DisplayLib.axf" - 1 Error(s), 1 Warning(s).
+../Drivers/stm32f1xx/lcd_io_spi.c(1118): warning:  #61-D: integer operation result is out of range
+    GPIOX_MODE(MODE_PP_ALTER_50MHZ, LCD_MOSI);
+../Drivers/stm32f1xx/lcd_io_spi.c(1118): warning:  #61-D: integer operation result is out of range
+    GPIOX_MODE(MODE_PP_ALTER_50MHZ, LCD_MOSI);
+../Drivers/stm32f1xx/lcd_io_spi.c(1118): warning:  #68-D: integer conversion resulted in a change of sign
+    GPIOX_MODE(MODE_PP_ALTER_50MHZ, LCD_MOSI);
+../Drivers/stm32_adafruit_lcd.c(100): warning:  #47-D: incompatible redefinition of macro "NULL"  (declared at line 72 of "C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h")
+  #define NULL                  (void *)0
+../Core/Src/main.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=5500 RO-data=1044 RW-data=112 ZI-data=2608  
+FromELF: creating hex file...
+"DisplayLib\DisplayLib.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -57,7 +64,6 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.5.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Target not created.
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

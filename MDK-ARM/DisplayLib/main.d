@@ -26,4 +26,13 @@ displaylib\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 displaylib\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 displaylib\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 displaylib\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
-displaylib\main.o: ../Core/Inc/DisplayLib.h
+displaylib\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+displaylib\main.o: ../Drivers/stm32f1xx/lcd_io_spi.c
+displaylib\main.o: ../Drivers/lcd.h
+displaylib\main.o: ../Drivers/stm32f1xx/lcd_io_spi.h
+displaylib\main.o: ../Drivers/stm32_adafruit_lcd.c
+displaylib\main.o: ../Drivers/stm32_adafruit_lcd.h
+displaylib\main.o: ../Drivers/Fonts/fonts.h
+displaylib\main.o: ../Drivers/Fonts/font8.c
+displaylib\main.o: ../Drivers/ili9488.c
+displaylib\main.o: ../Drivers/ili9488.h

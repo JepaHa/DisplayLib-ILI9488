@@ -22,8 +22,12 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include <stdlib.h>
+#include "lcd_io_spi.c"
+#include "stm32_adafruit_lcd.c"
+#include "ili9488.c"
+//#include "DisplayLib.c"
 
-#include "DisplayLib.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -58,6 +62,11 @@ static void MX_SPI1_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+
+
+
+
+
 /* USER CODE END 0 */
 
 /**
@@ -91,27 +100,32 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
+	ili9488_Init();
+	
 
 
-
-
-	uint8_t data[2] = {0xFF, 0xF0};
+	//uint8_t data[2] = {0xFF, 0xF0};
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		
+		
+		
+		BSP_LCD_Clear (0x0000);
+		HAL_Delay (150);
+		
+		
+		
+		
+		
+		
+		
+		
     /* USER CODE END WHILE */
 
-		
-		
-		HAL_GPIO_TogglePin (GPIOC, GPIO_PIN_13);
-		HAL_Delay (10);
-		HAL_SPI_Transmit(&hspi1, data, 2, 150);
-		
-		
-		
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -207,16 +221,37 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, Display_CS_Pin|GPIO_PIN_1, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : PC13 */
   GPIO_InitStruct.Pin = GPIO_PIN_13;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PA4 */
+  GPIO_InitStruct.Pin = GPIO_PIN_4;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : Display_CS_Pin PB1 */
+  GPIO_InitStruct.Pin = Display_CS_Pin|GPIO_PIN_1;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 
